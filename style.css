@@ -1,0 +1,45 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Main Content */
+.about-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Enable scrolling */
+    height: 80vh; /* Fixed height for scrolling */
+    text-align: center; /* Center align content */
+}
+
+/* About Image */
+.about-image img {
+    max-width: 100%; /* Ensure the image fits within the container */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Typewriter Effect */
+.typewriter {
+    font-family: "Courier New", Courier, monospace;
+    white-space: pre-wrap; /* Preserve line breaks */
+    color: #333;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: left; /* Align text to the left */
+    overflow-y: auto; /* Ensure the text container is scrollable */
+    height: calc(100% - 220px); /* Adjust height based on the image and padding */
+    padding: 10px;
+}
+.typewriter p {
+    margin-bottom: 1rem;
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.6;
+}
