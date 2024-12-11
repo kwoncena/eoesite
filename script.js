@@ -46,6 +46,39 @@ function navigateTo(page) {
 function reloadPage() {
   window.location.reload(); // Reloads the current page
 }
+document.addEventListener('DOMContentLoaded', () => {
+  // Get the video element
+  const backgroundVideo = document.getElementById('background-video');
+
+  // Get the Talk button
+  const talkButton = document.getElementById('talk-button');
+
+  // Stop the video when the Talk button is clicked
+  talkButton.addEventListener('click', () => {
+      backgroundVideo.pause();
+      backgroundVideo.currentTime = 0; // Reset video playback
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Select all timeline points and the shared audio element
+  const timelinePoints = document.querySelectorAll('.timeline-point');
+  const audioElement = document.getElementById('shared-audio');
+
+  // Add click event listener to each timeline point
+  timelinePoints.forEach(point => {
+      point.addEventListener('click', () => {
+          // Stop and reset audio if it's already playing
+          if (!audioElement.paused) {
+              audioElement.pause();
+              audioElement.currentTime = 0;
+          }
+
+          // Play the audio
+          audioElement.play();
+      });
+  });
+});
 
 // Select all timeline points
 const timelinePoints = document.querySelectorAll('.timeline-point');

@@ -153,3 +153,6 @@ body {
   }
 }
 
+#background-video {
+  display: none; /* Completely hide the video element */
+}
