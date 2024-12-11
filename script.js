@@ -1,36 +1,51 @@
 function navigateTo(page) {
-    const contentArea = document.getElementById('content-area');
-    fetch(page)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.text();
-        })
-        .then(html => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            const mainContent = doc.querySelector('main');
+  const contentArea = document.getElementById('content-area');
+  const leftColumn = document.querySelector('.left-column');
 
-            if (mainContent) {
-                contentArea.innerHTML = mainContent.innerHTML;
+  fetch(page)
+      .then(response => {
+          if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.text();
+      })
+      .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const mainContent = doc.querySelector('main') || doc.body;
 
-                // If the About page is loaded, initialize the typewriter effect
-                if (page === 'about.html') {
-                    const script = document.createElement('script');
-                    script.src = 'about.js';
-                    document.body.appendChild(script);
-                }
-            } else {
-                contentArea.innerHTML = `<h1>Error</h1><p>No <main> tag found in ${page}.</p>`;
-            }
-        })
-        .catch(error => {
-            console.error('Error loading page:', error);
-            contentArea.innerHTML = `<h1>Error</h1><p>${error.message}</p>`;
-        });
+          if (mainContent) {
+              contentArea.innerHTML = mainContent.innerHTML;
+
+              // Update left-column if needed
+              const newLeftColumn = doc.querySelector('.left-column');
+              if (newLeftColumn && leftColumn) {
+                  leftColumn.innerHTML = newLeftColumn.innerHTML;
+              }
+
+              // Dynamically load page-specific scripts
+              const scripts = doc.querySelectorAll('script');
+              scripts.forEach(script => {
+                  const newScript = document.createElement('script');
+                  newScript.src = script.src;
+                  document.body.appendChild(newScript);
+              });
+
+              const pageLoadedEvent = new Event('pageLoaded');
+              document.dispatchEvent(pageLoadedEvent);
+          } else {
+              contentArea.innerHTML = `<h1>Error</h1><p>No <main> tag found in ${page}.</p>`;
+          }
+      })
+      .catch(error => {
+          console.error('Error loading page:', error);
+          contentArea.innerHTML = `<h1>Error</h1><p>${error.message}</p>`;
+      });
 }
 
+function reloadPage() {
+  window.location.reload(); // Reloads the current page
+}
 
 // Select all timeline points
 const timelinePoints = document.querySelectorAll('.timeline-point');

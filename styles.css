@@ -1,140 +1,155 @@
 /* General Styles */
 body {
-    margin: 0;
-    font-family: 'Roboto', sans-serif; /* Merged font preference */
-    background-color: #1d1e22; /* Unified background color */
-    color: #fff; /* Unified text color */
-  }
-  
-  /* Responsive Two-Column Grid */
+  margin: 0;
+  font-family: 'Roboto', sans-serif; /* Merged font preference */
+  background-color: #1d1e22; /* Unified background color */
+  color: #fff; /* Unified text color */
+}
+
+/* Responsive Two-Column Grid */
+.responsive-two-column-grid {
+  display: block; /* Default for smaller screens */
+  height: 100vh; /* Full-height layout */
+}
+
+/* Columns */
+.responsive-two-column-grid > * {
+  padding: 1rem;
+}
+
+/* Left Column */
+.left-column {
+  background-color: #1E1E1E;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Spacing between items */
+  padding: 20px;
+}
+
+
+/* Logo Image */
+.logo img {
+  height: 60px; /* Maintain the existing size */
+  cursor: pointer; /* Indicates the image is clickable */
+  transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.1); /* Slight hover animation */
+}
+
+/* Navigation Item */
+.nav-item img {
+  width: 100px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.nav-item img:hover {
+  transform: scale(1.1); /* Enlarge slightly on hover */
+}
+
+/* Right Column */
+.right-column {
+  background-color: #1d1e22;
+  padding: 20px;
+  overflow-y: auto; /* Scroll if content overflows */
+}
+
+/* Centering About Image */
+.about-image {
+  display: flex; /* Enable flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 300px; /* Adjust height as needed */
+  margin-bottom: 20px; /* Add spacing below the image */
+}
+
+.about-image img {
+  max-width: 80%; /* Scale the image proportionally */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Timeline Styles */
+.timeline {
+  position: relative;
+  margin: 40px auto; /* Increased vertical spacing */
+  width: 90%;
+  max-width: 1600px; /* Doubled maximum size */
+}
+
+.timeline ul {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline ul:before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 4px; /* Doubled width of the line */
+  background: #fff;
+  left: 50%;
+  top: 0;
+  z-index: 1;
+}
+
+.timeline ul li {
+  position: relative;
+  margin: 40px 0; /* Doubled spacing between items */
+  text-align: center;
+}
+
+.timeline-point {
+  width: 30px; /* Doubled size of points */
+  height: 30px; /* Doubled size of points */
+  background: rgba(59, 112, 239, 1);
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px rgba(58, 112, 239, 0.2); /* Doubled glow size */
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+/* Card Styles */
+.card {
+  background: #282c34;
+  border-radius: 16px; /* Doubled border radius */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3); /* Slightly enhanced shadow */
+  width: 120%; /* Doubled width */
+  padding: 40px; /* Doubled padding */
+  margin: 20px auto; /* Doubled vertical margin */
+  text-align: center;
+  display: none;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+}
+
+.card img {
+  max-width: 100%;
+  border-radius: 16px; /* Doubled border radius */
+  margin-top: 20px; /* Doubled spacing above images */
+}
+
+.card.open {
+  display: block;
+}
+
+/* Tablet Breakpoint */
+@media (min-width: 768px) {
   .responsive-two-column-grid {
-    display: block; /* Default for smaller screens */
-    height: 100vh; /* Full-height layout */
+    display: grid;
+    grid-template-columns: 1fr 3fr; /* Left column takes 1/4, Right column takes 3/4 */
   }
-  
-  /* Columns */
-  .responsive-two-column-grid > * {
-    padding: 1rem;
-  }
-  
-  /* Left Column */
-  .left-column {
-    background-color: #1E1E1E;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px; /* Spacing between items */
-    padding: 20px;
-  }
-  
-  .logo img {
-    height: 60px;
-    cursor: pointer;
-  }
-  
-  /* Navigation Item */
-  .nav-item img {
-    width: 100px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .nav-item img:hover {
-    transform: scale(1.1); /* Enlarge slightly on hover */
-  }
-  
-  /* Right Column */
-  .right-column {
-    background-color: #1d1e22;
-    padding: 20px;
-    overflow-y: auto; /* Scroll if content overflows */
-  }
-  
-  /* Logo Container */
-  .logo-container {
-    text-align: center;
-    padding: 20px 0;
-    background-color: #1d1e22; /* Unified background color */
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-  
-  .logo {
-    max-width: 500px;
-    height: auto;
-  }
-  
-  /* Timeline Styles */
+
   .timeline {
-    position: relative;
-    margin: 20px auto;
-    width: 90%;
-    max-width: 800px;
+    max-width: 1800px; /* Slightly larger maximum size */
   }
-  
-  .timeline ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .timeline ul:before {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 2px;
-    background: #fff;
-    left: 50%;
-    top: 0;
-    z-index: 1;
-  }
-  
-  .timeline ul li {
-    position: relative;
-    margin: 20px 0;
-    text-align: center;
-  }
-  
+
   .timeline-point {
-    width: 15px;
-    height: 15px;
-    background: rgba(59, 112, 239, 1);
-    border-radius: 50%;
-    box-shadow: 0 0 0 3px rgba(58, 112, 239, 0.2);
-    margin: 0 auto;
-    cursor: pointer;
+    width: 60px; /* Double the size of points again for larger screens */
+    height: 60px;
   }
-  
-  /* Card Styles */
-  .card {
-    background: #282c34;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    width: 60%;
-    padding: 20px;
-    margin: 10px auto;
-    text-align: center;
-    display: none;
-    transition: max-height 0.3s ease, opacity 0.3s ease;
-    overflow: hidden;
-  }
-  
-  .card img {
-    max-width: 100%;
-    border-radius: 8px;
-    margin-top: 10px;
-  }
-  
-  .card.open {
-    display: block;
-  }
-  
-  /* Tablet Breakpoint */
-  @media (min-width: 768px) {
-    .responsive-two-column-grid {
-      display: grid;
-      grid-template-columns: 1fr 2fr; /* Split into two columns */
-    }
-  }
-  
+}
+

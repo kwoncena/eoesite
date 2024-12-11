@@ -5,24 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EOE - HOME</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+
 </head>
 <body>
+
     <div class="responsive-two-column-grid">
         <!-- Left Column -->
         <div class="left-column">
-            <div class="logo" onclick="navigateTo('index.html')">
-                <img src="eoelogo.png" alt="Logo">
-            </div>
-            <div class="nav-item" onclick="navigateTo('about.html')">
-                <img src="about.png" alt="About">
-            </div>
-            <div class="nav-item" onclick="navigateTo('talk.html')">
-                <img src="talk.png" alt="Talk">
-            </div>
-        </div>
+          <div class="logo">
+            <img src="eoelogo.png" alt="Logo" onclick="reloadPage()">
+          </div>
+          <div class="nav-item" onclick="navigateTo('about.html')">
+              <img src="about.png" alt="About">
+          </div>
+          <div class="nav-item">
+            <a href="https://kwoncena.github.io/talktofuture/" target="_blank">
+              <img src="talk.png" alt="Talk">
+            </a>
+          </div>
+      </div>
 
         <!-- Right Column -->
         <div class="right-column" id="content-area">
+          <div class="about-image">
+            <img src="eoeacro.png" alt="Evolution of Education">
+            
+          </div>
             <div class="timeline">
                 <ul>
                   <li>
@@ -192,6 +201,5 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
 </body>
 </html>
